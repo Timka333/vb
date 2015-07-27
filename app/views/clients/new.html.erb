@@ -1,0 +1,29 @@
+<h1>Welcome to Villa Borghese</h1>
+
+<%= form_for :client, url: clients_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+	  <%= f.radio_button :client_type, 'Public' %> 
+	  <%= label :type_public, 'Public' %>
+	  <%= f.radio_button :client_type, 'Designer' %>
+	  <%= label :type_designer, 'Designer' %>
+   </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
