@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150724173905) do
   create_table "clients", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "client_type"
     t.datetime "created_at"
     t.datetime "updated_at"
