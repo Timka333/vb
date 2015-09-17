@@ -16,5 +16,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 $( document ).ready(function() {
-  //js stuff
+  // After 5 seconds, fadeout login success msg	
+  $(".alert-success").delay(5000).slideUp('slow')
 });

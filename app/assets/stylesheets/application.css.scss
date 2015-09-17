@@ -19,6 +19,22 @@
 
 /* welcome form */
 
-input[type=text] { 
-padding: 3px;
-}
+
+input[type=text] {padding: 3px;}
+body, h1, h2, h3, h4, p{font-family: "Proxima Nova", "Lucida Grande", Helvetica, sans-serif; background:transparent;}
+h1 {margin:45px 0 0;text-align:center;font-weight:bold;}
+h4{margin:30px 0;line-height:30px;font-weight:400;text-align:center;}
+a {color: #0066cc;}
+
+/* HEADER */
+.header { margin:15px 0 0 0;}
+.header_controls {text-align:center;}
+.header_controls a {font-size:16px;line-height:32px;}
+
+/* FOOTER */
+.footer {margin:55px 0 0 0;border-top:1px solid gray;}
+.footer p { text-align:center;padding:14px 0;}
+
+/* FLASH MESSAGES */
+.alert {margin-top:15px;}
+.alert-success {}
