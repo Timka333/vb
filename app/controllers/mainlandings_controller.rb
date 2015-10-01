@@ -1,5 +1,6 @@
 class MainlandingsController < ApplicationController
   def index
+  	 @landing_page = true
   end
 
   def control
