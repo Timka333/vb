@@ -12,10 +12,10 @@
 				<p class="description">A sample project to help you discover StileHq.</p>
 			</div>
 			<% @current_users_projects.each do |p| %>
-				<div class="project_tile">
-					<h5><%= p.title %></h5>
-					<p class="description"><%= p.descrip %></p>
-				</div>
+					<div class="project_tile">
+						<%= link_to p.title, {:controller => "users", :action => "edit_project", :id => p.id } %>
+						<p class="description"><%= p.descrip %></p>
+					</div>
 			<% end %>
 		</div>
 	</div>

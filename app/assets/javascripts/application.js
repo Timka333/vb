@@ -12,10 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 $( document ).ready(function() {
   // After 5 seconds, fadeout login success msg	
-  $(".alert-success").delay(5000).slideUp('slow')
+  $(".alert-success").delay(5000).slideUp('slow');
+
+  //Todolist 
+    $(".cancel_tdl_button").click(function(){
+        $(".new_tdl_form").hide();
+        $(".add_tdl_button").show();
+    });
+    $(".add_tdl_button").click(function(){
+        $(".new_tdl_form").show();
+        $(".add_tdl_button").hide();
+        $("#todolist_title").focus();
+    });
 });

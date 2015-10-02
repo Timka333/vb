@@ -61,6 +61,40 @@ a {color: #0066cc;}
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
+.project_tile a {
+    height:100%;
+    font-size: 19px;
+    margin: 0 0 3px;
+    line-height: 1.1em;
+    word-wrap: break-word;
+    color:#333;
+}
+.project_tile_full h1 {
+    height:100%;
+    font-size: 24px;
+    margin: 0 0 3px;
+    line-height: 1.1em;
+    word-wrap: break-word;
+    color:#333;
+    text-align:left;
+}
+.project_tile_full {   
+    width: 695px;
+    float: left;
+    margin: 0 20px 20px 0;
+    position: relative;
+    text-align: left;
+    background: #fff;
+    padding: 15px 15px 25px;
+    text-rendering: optimizeLegibility;
+    text-shadow: none;
+    -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
 .project_container h2 {    
 	color: #aa9c84;
     font-size: 12px;
@@ -86,3 +120,36 @@ a {color: #0066cc;}
     line-height: 1.2em;
     word-wrap: break-word;
     color: #aa9c84;}
+
+.all_projects{
+    color:#FFF;
+}
+.all_projects:hover {
+    color:#FFF;
+    text-decoration: none;
+}
+
+
+/* PROJECT SPECIFIC */
+.project_tile_full{
+    .body{
+        border-top:1px dashed gray;
+        margin:20px 0;
+    }
+    h4 {
+        text-align:left;
+        margin:5px 0;
+        padding:0; 
+    }
+    h3 {
+        text-align:left;
+        margin:15px 0;
+        padding:0; 
+        font-size:18px;
+    }    
+
+}
+/* TODO ON PROJ PAGE */
+.add_todo{padding:0 0 0 25px;cursor: pointer;font-size:16px;}
+.add_tdl_button{font-size:12px; margin:0 0 0 10px;}
+.new_tdl_form {display:none;}
