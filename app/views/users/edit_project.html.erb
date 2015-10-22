@@ -20,7 +20,7 @@
 					    <%= f.text_field :title, :placeholder => "Give the list a title" %>
 					  </p>
 					  <%= f.hidden_field :user_id, :value => current_user.id %>
-					  <%= f.hidden_field :project_id, :value => params[:id] %>
+					  <%= f.hidden_field :proj_id, :value => params[:id] %>
 				      <button type="button" class="btn btn-default cancel_tdl_button">Cancel</button>
 				      <%= f.submit 'Create Todo List', :class => 'btn btn-primary' %>
 			      	<% end %>
@@ -28,7 +28,24 @@
 		      	<hr />
 		      	<% @current_users_todolists.each do |tdl| %>
 					<h5><%= tdl.title %></h5>
-					<div><a class="add_todo" title="Add a todo">Add a todo </a></div>
+					<a class="add_todo add_tdli_button" title="Add a todo">Add a todo </a>
+					
+					<div class="new_tdli_form">
+				  	<%= form_for @todolistitem, url: {:action => "create_todolist_item"} do |f| %>
+					  <p>
+					    <%= f.text_field :title, :placeholder => "Give the list a title" %>
+					  </p>
+					  <%= f.hidden_field :user_id, :value => current_user.id %>
+					  <%= f.hidden_field :proj_id, :value => params[:id] %>
+					  <%= f.hidden_field :todolists_id, :value => tdl.id %>
+				      <button type="button" class="btn btn-default cancel_tdli_button">Cancel</button>
+				      <%= f.submit 'Create Todo!', :class => 'btn btn-primary' %>
+			      	<% end %>
+					</div>
+					<%## Todolist items loop here! %>
+					<% @current_users_todolistitems.where(:todolists_id => tdl.id).each do |tdli| %>
+					<h5><%= tdli.title %></h5>
+					<% end %>
 				<% end %>
 			  </section>
 			</div>

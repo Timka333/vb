@@ -1,6 +1,9 @@
 class MainlandingsController < ApplicationController
   def index
-  	 @landing_page = true
+  	if user_signed_in?
+  	  redirect_to '/users/control'
+  	else
+  	end
   end
 
   def control

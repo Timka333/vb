@@ -28,4 +28,15 @@ $( document ).ready(function() {
         $(".add_tdl_button").hide();
         $("#todolist_title").focus();
     });
+
+  // Todolist item
+    $(".cancel_tdli_button").click(function(){
+        $(".new_tdli_form").hide();
+        $(".add_tdli_button").show();
+    });
+    $(".add_tdli_button").click(function(){
+        $(".new_tdli_form").show();
+        $(".add_tdli_button").hide();
+        $("#todolistitem_title").focus();
+    });
 });

@@ -16,16 +16,26 @@ class UsersController < ApplicationController
   def edit_project
     @project = Project.find(params[:id])
     @todolist = Todolist.new
-    @current_users_todolists = Todolist.where( :user_id => current_user.id )
+    @todolistitem = Todolistitem.new
+    @current_users_todolists = Todolist.where( :user_id => current_user.id, :proj_id => @project.id )
+    @current_users_todolistitems = Todolistitem.where( :user_id => current_user.id )
+  end
+
+  def create_todolist_item
+    @todolistitem = Todolistitem.new(todolistitem_params)
+
+    #tdl_id = params[:todolistitem][:todolist_id]
+    proj_id = params[:todolistitem][:proj_id]
+    @todolistitem.save
+    redirect_to :action => 'edit_project', :id => proj_id
   end
 
   def create_todolist
     @todolist = Todolist.new(todolist_params)
  
-    proj_id = params[:todolist][:project_id]
+    proj_id = params[:todolist][:proj_id]
     @todolist.save
     redirect_to :action => 'edit_project', :id => proj_id
-    #logger.debug 'Project id params :'  {params[:todolist].inspect}
   end  
 
   def create
@@ -41,6 +51,10 @@ private
 	end
   ## SoF Todo Params
   def todolist_params
-    params.require(:todolist).permit(:title, :user_id)
+    params.require(:todolist).permit(:title, :user_id, :proj_id)
+  end
+  ## SoF Todolistitems Params
+  def todolistitem_params
+    params.require(:todolistitem).permit(:title, :user_id, :todolists_id)
   end
 end

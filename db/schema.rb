@@ -60,9 +60,19 @@ ActiveRecord::Schema.define(version: 20151002182718) do
     t.datetime "updated_at"
   end
 
+  create_table "todolistitems", force: true do |t|
+    t.integer "todolists_id"
+    t.string  "title"
+    t.integer "user_id"
+    t.integer "proj_id"
+  end
+
+  add_index "todolistitems", ["todolists_id"], name: "index_todolistitems_on_todolists_id", using: :btree
+
   create_table "todolists", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
+    t.integer  "proj_id"
     t.string   "descrip"
     t.datetime "created_at"
     t.datetime "updated_at"
