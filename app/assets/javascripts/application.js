@@ -31,12 +31,21 @@ $( document ).ready(function() {
 
   // Todolist item
     $(".cancel_tdli_button").click(function(){
-        $(".new_tdli_form").hide();
-        $(".add_tdli_button").show();
+        current_tdl_id = $(this).attr('data-tdl-id');
+        $("." + current_tdl_id).hide();
+        $(".add_tdli_button_" + current_tdl_id ).show();
     });
     $(".add_tdli_button").click(function(){
-        $(".new_tdli_form").show();
-        $(".add_tdli_button").hide();
-        $("#todolistitem_title").focus();
+        current_tdl_id = $(this).attr('data-tdl-id');
+        $("." + current_tdl_id).show();
+        $(".add_tdli_button_" + current_tdl_id ).hide();
+        $(".todolistitem_title_" + current_tdl_id).focus();
     });
+
+    //check todolist item finished
+    // $(".finished_check").click(function(){
+    //    current_tdli_id = $(this).attr('id');
+    //    console.log(current_tdli_id);
+    //});
+
 });

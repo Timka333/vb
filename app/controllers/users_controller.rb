@@ -21,10 +21,18 @@ class UsersController < ApplicationController
     @current_users_todolistitems = Todolistitem.where( :user_id => current_user.id )
   end
 
+  def complete
+    @complete = Todolistitem.find(params[:todolistitem][:todolistsitem_id])
+    @complete.update_attributes(todolistitem_complete_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def create_todolist_item
     @todolistitem = Todolistitem.new(todolistitem_params)
 
-    #tdl_id = params[:todolistitem][:todolist_id]
     proj_id = params[:todolistitem][:proj_id]
     @todolistitem.save
     redirect_to :action => 'edit_project', :id => proj_id
@@ -56,5 +64,9 @@ private
   ## SoF Todolistitems Params
   def todolistitem_params
     params.require(:todolistitem).permit(:title, :user_id, :todolists_id)
+  end
+  ## SoF Todolistitems Params CHECKBOX
+  def todolistitem_complete_params
+    params.require(:todolistitem).permit(:finished)
   end
 end

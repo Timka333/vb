@@ -1,0 +1,5 @@
+<% if @complete.finished  %>
+	$(".check_container_<%= @complete.id %>").addClass( " completed_check " );
+<% else  %>
+	$(".check_container_<%= @complete.id %>").removeClass( " completed_check " );
+<% end  %>

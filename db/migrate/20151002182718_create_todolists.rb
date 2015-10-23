@@ -12,6 +12,7 @@ class CreateTodolists < ActiveRecord::Migration
       t.belongs_to :todolists, index: true
       t.string :title
       t.integer :user_id, :proj_id
+      t.boolean :finished
 
     end
 

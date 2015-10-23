@@ -28,24 +28,37 @@
 		      	<hr />
 		      	<% @current_users_todolists.each do |tdl| %>
 					<h5><%= tdl.title %></h5>
-					<a class="add_todo add_tdli_button" title="Add a todo">Add a todo </a>
+					<a class="add_todo add_tdli_button add_tdli_button_<%= tdl.id %>" data-tdl-id="<%= tdl.id %>" title="Add a todo">Add a todo </a>
 					
-					<div class="new_tdli_form">
+					<div class="new_tdli_form <%= tdl.id %>">
 				  	<%= form_for @todolistitem, url: {:action => "create_todolist_item"} do |f| %>
 					  <p>
-					    <%= f.text_field :title, :placeholder => "Give the list a title" %>
+					    <%= f.text_field :title, :placeholder => "Give the list a title", :class => "todolistitem_title_#{tdl.id}" %>
 					  </p>
 					  <%= f.hidden_field :user_id, :value => current_user.id %>
 					  <%= f.hidden_field :proj_id, :value => params[:id] %>
 					  <%= f.hidden_field :todolists_id, :value => tdl.id %>
-				      <button type="button" class="btn btn-default cancel_tdli_button">Cancel</button>
+				      <button type="button" class="btn btn-default cancel_tdli_button" data-tdl-id="<%= tdl.id %>">Cancel</button>
 				      <%= f.submit 'Create Todo!', :class => 'btn btn-primary' %>
 			      	<% end %>
 					</div>
 					<%## Todolist items loop here! %>
+					<div class="tdli_container">
 					<% @current_users_todolistitems.where(:todolists_id => tdl.id).each do |tdli| %>
-					<h5><%= tdli.title %></h5>
+					<% @complete = Todolistitem.find(tdli.id) %>
+					  <%= form_for @complete, url: {:controller => "users", :action => "complete"}, :method => :POST, :remote => true do |f| %>	
+					  <ul>
+					  	<% if @complete.finished = true %>
+							<li class="tdli check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check completed_check" , :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %>
+						<% else %>
+							<li class="tdli check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check" , :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %>
+						<% end %>
+							<%= tdli.title %></li>
+					  <ul>
+						<%= f.hidden_field :todolistsitem_id, :value => tdli.id %>
+					  <% end %>
 					<% end %>
+					</div>
 				<% end %>
 			  </section>
 			</div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'users/edit_project'
   post 'users/create_todolist'
   post 'users/create_todolist_item'
+  post 'users/complete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

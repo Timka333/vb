@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20151002182718) do
     t.string  "title"
     t.integer "user_id"
     t.integer "proj_id"
+    t.boolean "finished"
   end
 
   add_index "todolistitems", ["todolists_id"], name: "index_todolistitems_on_todolists_id", using: :btree
