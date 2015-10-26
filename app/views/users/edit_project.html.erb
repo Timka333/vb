@@ -33,7 +33,7 @@
 					<div class="new_tdli_form <%= tdl.id %>">
 				  	<%= form_for @todolistitem, url: {:action => "create_todolist_item"} do |f| %>
 					  <p>
-					    <%= f.text_field :title, :placeholder => "Give the list a title", :class => "todolistitem_title_#{tdl.id}" %>
+					    <%= f.text_field :title, :placeholder => "Add a todo!", :class => "todolistitem_title_#{tdl.id}" %>
 					  </p>
 					  <%= f.hidden_field :user_id, :value => current_user.id %>
 					  <%= f.hidden_field :proj_id, :value => params[:id] %>
@@ -48,12 +48,11 @@
 					<% @complete = Todolistitem.find(tdli.id) %>
 					  <%= form_for @complete, url: {:controller => "users", :action => "complete"}, :method => :POST, :remote => true do |f| %>	
 					  <ul>
-					  	<% if @complete.finished = true %>
-							<li class="tdli check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check completed_check" , :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %>
-						<% else %>
-							<li class="tdli check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check" , :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %>
-						<% end %>
-							<%= tdli.title %></li>
+					  	<% if @complete.finished %>
+					  	  <li class="tdli completed_check check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check" , :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %><%= tdli.title %></li>
+					  	<% else %>  
+					  	  <li class="tdli check_container_<%= tdli.id %>"><%= f.check_box :finished, :id=> tdli.id, :class=> "finished_check", :onclick => "$('#edit_todolistitem_#{tdli.id}').submit()" %><%= tdli.title %></li>
+					  	<% end %>
 					  <ul>
 						<%= f.hidden_field :todolistsitem_id, :value => tdli.id %>
 					  <% end %>
@@ -61,6 +60,7 @@
 					</div>
 				<% end %>
 			  </section>
+			  <p> Add a person to this project!</p>
 			</div>
 		</div>
 	</div>
