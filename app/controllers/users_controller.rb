@@ -52,7 +52,8 @@ class UsersController < ApplicationController
   	@project.save
   	redirect_to '/users/control'
   end
-	 
+
+
 private
 	def project_params
 	  params.require(:project).permit(:title, :descrip, :user_id)

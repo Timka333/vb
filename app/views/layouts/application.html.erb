@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="<%= @landing_page ? 'landingpage' : ''%>">
+<html class="<%= user_signed_in? ? 'logged_in' : ''%>">
 <head>
   <title>StileHQ</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>

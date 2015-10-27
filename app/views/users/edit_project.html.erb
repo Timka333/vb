@@ -1,9 +1,11 @@
 <div class="row project_container">
 	<div class="col-md-2 center-block">
-		<button type="button" class="new_project btn btn-primary" aria-label="Left Align">
+		<%= link_to({:controller => "users", :action => "control" }, :class=> 'all_projects') do %>
+			<button type="button" class="new_project btn btn-primary" aria-label="Left Align">
 			<span class="glyphicon glyphicon-backward" aria-hidden="true"></span> 
-			<%= link_to "All Projects", {:controller => "users", :action => "control" }, :class=> 'all_projects' %>
-		</button>
+			<span>All Projects</span>
+			</button>
+		<% end %>
 	</div>
 	<div class="col-md-9">
 		<div class="project_tile_container">
@@ -61,6 +63,8 @@
 				<% end %>
 			  </section>
 			  <p> Add a person to this project!</p>
+			  <%#= form_for @complete, url: {:controller => "users", :action => "complete"}, :method => :POST, :remote => true do |f| %>	
+			  <%# end %>
 			</div>
 		</div>
 	</div>
