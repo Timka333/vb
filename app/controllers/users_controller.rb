@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def edit_project
     @project = Project.find(params[:id])
     @todolist = Todolist.new
+    @add_user = User.new
     @todolistitem = Todolistitem.new
     @current_users_todolists = Todolist.where( :user_id => current_user.id, :proj_id => @project.id )
     @current_users_todolistitems = Todolistitem.where( :user_id => current_user.id )
@@ -24,6 +25,16 @@ class UsersController < ApplicationController
   def complete
     @complete = Todolistitem.find(params[:todolistitem][:todolistsitem_id])
     @complete.update_attributes(todolistitem_complete_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def add_user
+    @add_user = Usertobe.new(usertobe_params)
+    @add_user.save
+    UsertobeMailer.invite_email(@add_user)
     respond_to do |format|
       format.html
       format.js
@@ -70,4 +81,9 @@ private
   def todolistitem_complete_params
     params.require(:todolistitem).permit(:finished)
   end
+
+  def usertobe_params
+    params.require(:user).permit(:email)
+  end
+
 end

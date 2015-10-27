@@ -63,8 +63,10 @@
 				<% end %>
 			  </section>
 			  <p> Add a person to this project!</p>
-			  <%#= form_for @complete, url: {:controller => "users", :action => "complete"}, :method => :POST, :remote => true do |f| %>	
-			  <%# end %>
+			  <%= form_for @add_user, url: {:controller => "users", :action => "add_user"}, :method => :GET, :remote => true do |f| %>	
+			  	<%= f.text_field :email %>
+			  	<%= f.submit 'Add person!', :class => 'btn btn-primary' %>
+			  <% end %>
 			</div>
 		</div>
 	</div>
